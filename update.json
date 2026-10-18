@@ -1,0 +1,6 @@
+{
+  "versionCode": 4,
+  "versionName": "1.1.2",
+  "apkUrl": "https://github.com/Alsidi-Group/Masrofi/raw/main/Masrofi-v1.1.2.apk",
+  "notes": "إصلاح فحص التحديثات: سلسلة روابط بديلة تلقائية + رسائل خطأ واضحة مع الحلول. مهم: اجعل المستودع عاماً أو ارفع update.json إلى الفرع main"
+}
