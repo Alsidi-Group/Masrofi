@@ -5,15 +5,18 @@
 #  المتطلبات: java (JDK 17+) + apktool.jar + build-tools (aapt/apksigner/zipalign)
 #  لإصدار نسخة جديدة: عدّل VER و VERSION_CODE أدناه فقط، ثم عدّل
 #  versionCode/versionName في decoded/apktool.yml — أو مرّرها كوسيطتين:
-#      bash build-release.sh 1.8.0 11
+#      bash build-release.sh 1.9.0 13
 # ============================================================
 set -euo pipefail
 
 # -------- إعدادات الإصدار (المصدر الوحيد للحقيقة) --------
-VER="1.7.0"            # versionName
-VERSION_CODE="10"      # versionCode
+VER="1.9.2"            # versionName
+VERSION_CODE="15"      # versionCode
 ALIAS="masrofi"
 KS_PASS='Masrofi@2026'
+# يمكن تجاوزها مؤقتاً:  bash build-release.sh <versionName> <versionCode>
+VER="${1:-$VER}"
+VERSION_CODE="${2:-$VERSION_CODE}"
 # ---------------------------------------------------------
 
 HERE="$(cd "$(dirname "$0")" && pwd)"

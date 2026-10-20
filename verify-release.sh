@@ -9,8 +9,8 @@ set -u
 PKG="${1:-.}"
 cd "$PKG" 2>/dev/null || { echo "✗ المجلد غير موجود: $PKG"; exit 1; }
 
-VER="1.7.0"
-CODE="10"
+VER="1.9.2"
+CODE="15"
 APK="Masrofi-v${VER}.apk"
 DEC="Masrofi-apktool-decoded.zip"
 SDK="${ANDROID_BUILD_TOOLS:-}"   # يمكن تمرير مسار build-tools هنا
@@ -77,11 +77,11 @@ fi
 # 5) اتساق update.json
 echo "[5/6] اتساق update.json"
 if command -v python3 >/dev/null 2>&1; then
-  python3 - "$VER" "$APK" <<'PY' && ok "update.json: versionName/versionCode/apkUrl متسقة" || bad "update.json غير متسق"
+  python3 - "$VER" "$APK" "$CODE" <<'PY' && ok "update.json: versionName/versionCode/apkUrl متسقة" || bad "update.json غير متسق"
 import json,sys
 ver,apk=sys.argv[1],sys.argv[2]
 d=json.load(open("update.json"))
-assert d["versionName"]==ver and str(d["versionCode"])=="10", "version mismatch"
+assert d["versionName"]==ver and str(d["versionCode"])==sys.argv[3], "version mismatch"
 assert d["apkUrl"].rstrip("/").endswith(apk), f"apkUrl لا يشير إلى {apk}"
 PY
 else
