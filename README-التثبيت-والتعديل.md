@@ -1,9 +1,14 @@
-# مصروفي v1.9.0 — دليل التثبيت والتعديل
+# مصروفي v1.9.1 — دليل التثبيت والتعديل
 
 **المطوّر:** مــروان السيــدي | Marwan Alsidi • دولــة لــيـبـيـا 🇱🇾 • Alsidi Group
-**الحزمة:** `com.marwanalsidi.masrofi` • versionCode **13** • versionName **1.9.0**
+**الحزمة:** `com.marwanalsidi.masrofi` • versionCode **14** • versionName **1.9.1**
 
 ---
+
+## ■ ما الجديد في v1.9.1
+
+- **إصلاح عاجل (بلاغ المستخدمين):** توقف التطبيق عند الضغط على أي اختيار من قائمة «الدفع عبر خدمات الدفع الإلكتروني» (إدفع لي، موبي كاش، ناب بزنس، سداد، تداول…) — أُعيدت كتابة معالج الاختيار (`AddExpenseActivity$12`) بحماية null مضبوطة المسجلات، مع الحفاظ على السلوك نفسه.
+- **مُسجّل أعطال مدمج (`CrashLog`):** أي استثناء غير ملتقط يُكتب في `crash.txt` داخل مجلد التطبيق الخارجي ويُعرض في حوار عند إعادة فتح التطبيق (شاشة الرئيسية) — يُمحى عند الضغط على «حسناً». يُسهّل تشخيص أي عطل قادم بلا حاجة لـ adb.
 
 ## ■ ما الجديد في v1.9.0
 
@@ -18,11 +23,11 @@
 
 | الملف | الوصف |
 |---|---|
-| `Masrofi-v1.9.0.apk` | التطبيق الجاهز للتثبيت (موقّع، 348 KB تقريباً) |
-| `Masrofi-apktool-decoded.zip` | المشروع مفكوكاً بالكامل (Smali + الموارد + AndroidManifest) — مجلد `decoded-v1.9.0/` |
-| `update.json` | نموذج فحص التحديثات داخل التطبيق (versionCode 13 / versionName 1.9.0) |
+| `Masrofi-v1.9.1.apk` | التطبيق الجاهز للتثبيت (موقّع، 417 KB تقريباً) |
+| `Masrofi-apktool-decoded.zip` | المشروع مفكوكاً بالكامل (Smali + الموارد + AndroidManifest) — مجلد `decoded-v1.9.1/` |
+| `update.json` | نموذج فحص التحديثات داخل التطبيق (versionCode 14 / versionName 1.9.1) |
 | `index.html` | صفحة تحميل عربية أنيقة **مكتفة ذاتياً** — تعمل دون إنترنت |
-| `build-release.sh` | سكربت البناء والتوقيع الآلي (VER=1.9.0 / VERSION_CODE=13 أعلى السكربت) |
+| `build-release.sh` | سكربت البناء والتوقيع الآلي (VER=1.9.1 / VERSION_CODE=14 أعلى السكربت) |
 | `verify-release.sh` | سكربت الفحص المستمر: ملفات + بصمات + توقيع + badging + اتساق update.json |
 | `SHA256SUMS.txt` | بصمات SHA-256 لكل ملفات الحزمة |
 
@@ -41,12 +46,12 @@
 - **من لديه v1.4.0 – v1.6.0:** أندرويد سيرفض التثبيت فوق القديم. **احذف الإصدار القديم أولاً**، وصدّر إيصالاتك من داخل التطبيق قبل الحذف (قاعدة البيانات محلية وتُحذف مع التطبيق).
 - **بصمة الشهادة الجديدة (Cert SHA-256):**
   `abcc93eb60ec8042822eb4b162dbf3f20a11293644bd1d9f0731dd9a76becb97`
-- **بصمة APK ‏v1.9.0 (ملف SHA-256):**
-  `8065b119cafb013699e7f03de110ff37d1b45f2849c97aa911c43dc49de251da`
+- **بصمة APK ‏v1.9.1 (ملف SHA-256):**
+  `dc47208c9fa12a2bae734ab17292909bb65695b1546de641a6c350f350b7c051`
 
 ## ■ التثبيت على الهاتف
 
-1. انقل `Masrofi-v1.9.0.apk` إلى الهاتف وافتحه.
+1. انقل `Masrofi-v1.9.1.apk` إلى الهاتف وافتحه.
 2. فعّل «التثبيت من مصادر غير معروفة» إن طُلب منك.
 3. إن كان لديك إصدار سابق: احذفه أولاً (بعد تصدير الإيصالات).
 4. أنشئ حساباً محلياً أو اختر Gmail، ثم أضف راتبك وابدأ.
@@ -54,10 +59,10 @@
 ## ■ التثبيت عبر ADB (للمطورين)
 
 ```bash
-adb install -r Masrofi-v1.9.0.apk
+adb install -r Masrofi-v1.9.1.apk
 # بعد حذف إصدار قديم بتوقيع مختلف:
 adb uninstall com.marwanalsidi.masrofi
-adb install Masrofi-v1.9.0.apk
+adb install Masrofi-v1.9.1.apk
 ```
 
 ## ■ التحقق من سلامة الملفات
@@ -70,24 +75,26 @@ bash verify-release.sh
 sha256sum -c SHA256SUMS.txt
 
 # فحص التوقيع والشهادة:
-apksigner verify --print-certs Masrofi-v1.9.0.apk
+apksigner verify --print-certs Masrofi-v1.9.1.apk
 ```
 
 سكربت `verify-release.sh` يتحقق من: وجود الملفات السبعة، مطابقة البصمات، صلاحية التوقيع، تطابق الشهادة مع البصمة المعروفة، badging الحزمة والإصدار، اتساق `update.json`، واكتمال `index.html` — بأكواد خروج مناسبة للاستخدام في CI.
 
 ## ■ التعديل وإعادة البناء (apktool)
 
-1. فك الحزمة: `unzip Masrofi-apktool-decoded.zip` → مجلد `decoded-v1.9.0/`
+1. فك الحزمة: `unzip Masrofi-apktool-decoded.zip` → مجلد `decoded-v1.9.1/`
 2. أشهر التعديلات:
-   - الألوان والمظاهر: `decoded-v1.9.0/res/values/colors.xml`
-   - النصوص وروابط التحديث واسم المطور (`about_dev`): `decoded-v1.9.0/res/values/strings.xml` وبقية ملفات اللغات
+   - الألوان والمظاهر: `decoded-v1.9.1/res/values/colors.xml`
+   - النصوص وروابط التحديث واسم المطور (`about_dev`): `decoded-v1.9.1/res/values/strings.xml` وبقية ملفات اللغات
    - الشعار (محفظة + فلوس + ساعة): `res/drawable/ic_launcher_fg.xml` + `res/drawable/img_logo.xml` + خلفية `res/drawable/ic_launcher_bg.xml`
    - الآلة الحاسبة: `smali/com/marwanalsidi/masrofi/CalculatorActivity.smali` (تُبنى واجهتها برمجياً بالكامل)
+   - مسار اختيار الدفع: `smali/com/marwanalsidi/masrofi/AddExpenseActivity$12.smali` (معالج بحماية null)
+   - مُسجّل الأعطال: `smali/com/marwanalsidi/masrofi/CrashLog.smali` + نقاط ربط في `App.<init>` و`MainActivity.onCreate`
 3. **أو استخدم السكربت الجاهز** (يبني، يحاذي، يوقّع، يتحقق، يجدد البصمات):
 
 ```bash
-bash build-release.sh              # يبني v1.9.0 (code 13) كما هي مضبوطة
-bash build-release.sh 1.9.1 14     # إصدار جديد: يرقّع apktool.yml تلقائياً
+bash build-release.sh              # يبني v1.9.1 (code 14) كما هي مضبوطة
+bash build-release.sh 1.9.2 15     # إصدار جديد: يرقّع apktool.yml تلقائياً
 ```
 
 4. متطلبات البناء: JDK 17+، ‏`apktool.jar`، ‏build-tools فيها `aapt`/`apksigner`/`zipalign`
@@ -98,11 +105,11 @@ bash build-release.sh 1.9.1 14     # إصدار جديد: يرقّع apktool.yml
 ## ■ النشر وروابط التحميل المباشر
 
 1. ارفع ملفات هذه الحزمة إلى جذر المستودع `Alsidi-Group/Masrofi` (فرع main):
-   `Masrofi-v1.9.0.apk` + `update.json` + `index.html`
+   `Masrofi-v1.9.1.apk` + `update.json` + `index.html`
 2. يصبح التحميل المباشر متاحاً على:
-   `https://github.com/Alsidi-Group/Masrofi/raw/main/Masrofi-v1.9.0.apk`
+   `https://github.com/Alsidi-Group/Masrofi/raw/main/Masrofi-v1.9.1.apk`
 3. تطبيق v1.7.0+ سيرى التحديثات القادمة تلقائياً عبر `update.json` على GitHub.
-4. إصدار GitHub Release رسمي اختياري: Attach the APK → وسم `v1.9.0`.
+4. إصدار GitHub Release رسمي اختياري: Attach the APK → وسم `v1.9.1`.
 5. يمكنك أيضاً استضافة `index.html` وAPK على أي استضافة ثابتة (GitHub Pages مثلاً) — الصفحة مكتفة ذاتياً وتعمل كما هي.
 
 ## ■ ملاحظة أمنية (مهمة للسجل)
