@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مصروفي v1.9.3 — التحميل المباشر</title>
+<title>مصروفي v1.9.4 — التحميل المباشر</title>
 <style>
   :root{
     --bg:#0c1512; --card:#12211b; --card2:#16281f; --line:#244636;
@@ -50,6 +50,23 @@
   footer b{color:var(--em2)}
   .copied{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--em);color:#04110b;font-weight:700;padding:9px 22px;border-radius:999px;font-size:.85rem;opacity:0;pointer-events:none;transition:.3s}
   .copied.show{opacity:1}
+  .fl{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+  .fl-row{display:flex;align-items:center;gap:14px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;transition:.15s}
+  .fl-row:hover{border-color:var(--em)}
+  .fl-main{border-color:#2f6b52;background:linear-gradient(160deg,#143026,#122a20)}
+  .fl-ico{font-size:1.5rem;width:40px;text-align:center;flex-shrink:0}
+  .fl-info{flex:1;min-width:0}
+  .fl-name{font-weight:800;font-size:.95rem;direction:ltr;unicode-bidi:embed;word-break:break-all}
+  .fl-desc{font-size:.82rem;color:var(--mut);margin-top:2px}
+  .fl-meta{font-size:.7rem;color:var(--em2);margin-top:5px;direction:ltr;unicode-bidi:embed;font-family:"Courier New",monospace;word-break:break-all}
+  .fl-copy{cursor:pointer;border:1px solid var(--line);border-radius:6px;padding:1px 8px;color:var(--em2);background:#0a1410;font-size:.68rem;font-family:inherit;direction:rtl}
+  .fl-copy:hover{border-color:var(--em)}
+  .fl-btn{background:linear-gradient(135deg,#059669,#10b981);color:#04110b;font-weight:800;text-decoration:none;border-radius:10px;padding:10px 22px;font-size:.9rem;white-space:nowrap;box-shadow:0 4px 14px rgba(16,185,129,.3);transition:.2s;flex-shrink:0}
+  .fl-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(16,185,129,.5)}
+  .fl-btn.alt{background:var(--card);color:var(--em2);border:1px solid var(--line);box-shadow:none}
+  .fl-btn.alt:hover{border-color:var(--em);transform:none}
+  .fl-hint{font-size:.86rem;color:var(--mut);margin-top:6px}
+  @media(max-width:560px){.fl-row{flex-wrap:wrap}.fl-btn{flex:1 1 100%;text-align:center}}
   @media(max-width:520px){h1{font-size:1.55rem}.btn{padding:14px 30px;font-size:1rem;width:100%}}
 </style>
 </head>
@@ -69,11 +86,11 @@
         <rect x="71.2" y="69.2" width="6.8" height="1.7" fill="#047857"/>
       </svg>
     </div>
-    <h1>مصروفي <span>v1.9.3</span></h1>
+    <h1>مصروفي <span>v1.9.4</span></h1>
     <p class="sub">تطبيق إدارة المصروفات الشخصية — مروان السيدي (ليبيا) • تحميل مباشر بلا وسيط</p>
     <div class="badges">
-      <span class="badge">versionCode 16</span>
-      <span class="badge">النقر على طرق الدفع يعمل + إغلاق تلقائي للقوائم</span>
+      <span class="badge">versionCode 17</span>
+      <span class="badge">اختيار الدفع محصّن بالكامل — إغلاق فوري وبيان تشخيصي موسّع</span>
       <span class="badge">شعار: محفظة + فلوس + ساعة</span>
       <span class="badge">حاسبة ملء الشاشة</span>
       <span class="badge">أرقام غربية 0-9</span>
@@ -86,14 +103,14 @@
   </header>
 
   <div class="dl-box">
-    <a class="btn" href="Masrofi-v1.9.3.apk" download>
+    <a class="btn" href="Masrofi-v1.9.4.apk" download>
       ⬇ تحميل التطبيق مباشرة
-      <small>Masrofi-v1.9.3.apk — ‏417 KB</small>
+      <small>Masrofi-v1.9.4.apk — ‏417 KB</small>
     </a>
     <p class="meta">آخر تحديث: 20 أكتوبر 2026 • النقر يعمل على الهاتف والكمبيوتر</p>
-    <div class="hash" onclick="cp(this,'7e6f519f2ce0ca816446f72fedb9afb5b94fde682d1159118a82ba01e6b598fc')" title="انقر للنسخ">
+    <div class="hash" onclick="cp(this,'26acdfb576d5c3e753334019ed1af2d9c120ddf23bc07f5941e29a56f735b0ea')" title="انقر للنسخ">
       <span class="lbl">بصمة الملف SHA-256 (انقر للنسخ)</span>
-      <span class="mono">7e6f519f2ce0ca816446f72fedb9afb5b94fde682d1159118a82ba01e6b598fc</span>
+      <span class="mono">26acdfb576d5c3e753334019ed1af2d9c120ddf23bc07f5941e29a56f735b0ea</span>
     </div>
     <div class="hash" onclick="cp(this,'abcc93eb60ec8042822eb4b162dbf3f20a11293644bd1d9f0731dd9a76becb97')" title="انقر للنسخ">
       <span class="lbl">بصمة شهادة التوقيع (Cert SHA-256) — انقر للنسخ</span>
@@ -107,11 +124,12 @@
   </div>
 
   <div class="card" style="margin-bottom:14px">
-    <h3>✨ ما الجديد في v1.9.3</h3>
+    <h3>✨ ما الجديد في v1.9.4</h3>
     <ul>
-      <li><b>الإصلاح الجذري لبلاغ «لا يوجد نقر»:</b> قوائم اختيار طريقة الدفع كانت تبقى مفتوحة بعد الاختيار والتحديث يحدث خلفها بلا أي استجابة مرئية — الآن كل نقرة تُظهر إشعار تأكيد «تم اختيار طريقة الدفع: …» وتُغلق القوائم تلقائياً وتُظهر القيمة الجديدة في النموذج فوراً</li>
-      <li><b>لا تراكم للحوارات:</b> فتح قائمة طرق الدفع الفرعية يغلق قائمة الفئات خلفها تلقائياً — قائمة واحدة أمامك في كل لحظة، وزر «رجوع» يعيدك لقائمة الفئات بنظافة</li>
-      <li>السلوك موحّد مع قائمة المحلات العاملة، وبقيت كل طبقات حماية 1.9.2 والإصلاحات السابقة كما هي</li>
+      <li><b>تحصين عميق لاختيار طريقة الدفع:</b> عند اختيار نوع الدفع تُغلق القوائم <b>أولاً</b> (استجابة فورية مضمونة) ثم يُحدَّث النموذج ويظهر إشعار «تم اختيار طريقة الدفع: …» — كل خطوة محمية باستقلال تام، فلا يظهر أي إشعار خطأ في هذا المسار مهما كانت ظروف الجهاز</li>
+      <li><b>تشخيص أذكى إن حدث أي خطأ مستقبلاً:</b> التقرير المحفوظ يبدأ الآن باسم المكوّن الجاني بالضبط (click-error in …) بدل سطر عام — تسريع لحل أي بلاغ قادم من أول لقطة شاشة</li>
+      <li><b>حماية فتح القوائم أيضاً:</b> فتح قائمة الفئات أو قائمة العناصر لن يتعطل أبداً بسبب حالة إغلاق حوار قديم — كل إغلاق قديم محمي ويعود التحكم لفتح الجديد</li>
+      <li>بقيت كل إصلاحات 1.9.4 (إغلاق تلقائي للقوائم) و1.9.2 (حماية كل قوائم الخيارات) و1.9.1/1.9.0 قائمة كما هي</li>
     </ul>
   </div>
 
@@ -119,7 +137,7 @@
     <div class="card">
       <h3>📲 التثبيت على الهاتف</h3>
       <ol class="steps">
-        <li>حمّل <b>Masrofi-v1.9.3.apk</b> من الزر أعلاه.</li>
+        <li>حمّل <b>Masrofi-v1.9.4.apk</b> من الزر أعلاه.</li>
         <li>افتح الملف وفعّل «التثبيت من مصادر غير معروفة» إن طُلب.</li>
         <li>أنشئ حساباً محلياً أو سجّل عبر Gmail.</li>
         <li>أضف راتبك وابدأ التسجيل.</li>
@@ -129,15 +147,15 @@
       <h3>🖥 التثبيت عبر ADB</h3>
       <ol class="steps">
         <li>فعّل «تصحيح USB» من خيارات المطور.</li>
-        <li>ثبّت بالأمر: <code>adb install -r Masrofi-v1.9.3.apk</code></li>
+        <li>ثبّت بالأمر: <code>adb install -r Masrofi-v1.9.4.apk</code></li>
         <li>لفرض التثبيت النظيف بعد تغيّر التوقيع: <code>adb install -r -d</code> بعد إزالة القديم.</li>
       </ol>
     </div>
     <div class="card">
       <h3>✅ التحقق من سلامة الملف</h3>
       <ol class="steps">
-        <li>على الكمبيوتر: <code>sha256sum Masrofi-v1.9.3.apk</code> وقارن بالبصمة أعلاه.</li>
-        <li>المطورون: <code>apksigner verify --print-certs Masrofi-v1.9.3.apk</code></li>
+        <li>على الكمبيوتر: <code>sha256sum Masrofi-v1.9.4.apk</code> وقارن بالبصمة أعلاه.</li>
+        <li>المطورون: <code>apksigner verify --print-certs Masrofi-v1.9.4.apk</code></li>
         <li>الملف <code>SHA256SUMS.txt</code> بجانب الملفات يحوي كل البصمات.</li>
       </ol>
     </div>
@@ -151,19 +169,86 @@
     </div>
   </div>
 
-  <div class="card" style="margin-bottom:14px">
-    <h3>📦 محتويات حزمة التحميل الكاملة</h3>
-    <table>
-      <tr><th>الملف</th><th>الوصف</th></tr>
-      <tr><td>Masrofi-v1.9.3.apk</td><td>التطبيق الجاهز للتثبيت (موقّع، versionCode 16)</td></tr>
-      <tr><td>Masrofi-apktool-decoded.zip</td><td>المشروع مفكوكاً بالكامل (Smali + الموارد) لإعادة البناء والتعديل</td></tr>
-      <tr><td>update.json</td><td>نموذج فحص التحديثات داخل التطبيق</td></tr>
-      <tr><td>build-release.sh</td><td>سكربت البناء والتوقيع الآلي (VER=1.9.3 / CODE=16)</td></tr>
-      <tr><td>verify-release.sh</td><td>سكربت الفحص المستمر لسلامة الإصدار</td></tr>
-      <tr><td>SHA256SUMS.txt</td><td>بصمات جميع الملفات للتحقق</td></tr>
-      <tr><td>README-التثبيت-والتعديل.md</td><td>الدليل الشامل للتثبيت والتعديل وإعادة البناء</td></tr>
-    </table>
+  <!-- FILELIST:START -->
+  <div class="card" style="margin-bottom:14px" id="filelist">
+    <h3>📋 قائمة التحميل المباشر (8 ملفات — زر تحميل لكل ملف)</h3>
+    <p class="fl-hint">اضغط زر «تحميل» بجانب أي ملف لتنزيله فوراً — الروابط نسبية وتعمل على الهاتف والكمبيوتر، وكل بصمة قابلة للنسخ بالنقر عليها.</p>
+    <div class="fl">
+    <div class="fl-row fl-main">
+      <div class="fl-ico">📦</div>
+      <div class="fl-info">
+        <div class="fl-name">Masrofi-v1.9.4.apk</div>
+        <div class="fl-desc">التطبيق الجاهز للتثبيت — موقّع بشهادة مروان السيدي (versionCode 17)</div>
+        <div class="fl-meta">416.6 KB • SHA-256: 26acdfb576…35b0ea <button class="fl-copy" onclick="cp(this,'26acdfb576d5c3e753334019ed1af2d9c120ddf23bc07f5941e29a56f735b0ea')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn" href="Masrofi-v1.9.4.apk" download>⬇ تحميل</a>
+    </div>
+    <div class="fl-row">
+      <div class="fl-ico">🗂</div>
+      <div class="fl-info">
+        <div class="fl-name">Masrofi-apktool-decoded.zip</div>
+        <div class="fl-desc">المشروع مفكوكاً بالكامل (Smali + الموارد) لإعادة البناء والتعديل</div>
+        <div class="fl-meta">1.12 MB • SHA-256: f3ab1c2224…82a7eb <button class="fl-copy" onclick="cp(this,'f3ab1c2224ce2bf33a86fcb0bcd668d4c7b91a8a04578fbb8216b5160582a7eb')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn alt" href="Masrofi-apktool-decoded.zip" download>⬇ تحميل</a>
+    </div>
+    <div class="fl-row">
+      <div class="fl-ico">📖</div>
+      <div class="fl-info">
+        <div class="fl-name">README-التثبيت-والتعديل.md</div>
+        <div class="fl-desc">الدليل الشامل للتثبيت والتعديل وإعادة البناء</div>
+        <div class="fl-meta">13.0 KB • SHA-256: 5a71e3201e…77653b <button class="fl-copy" onclick="cp(this,'5a71e3201e674641c4f96e86c4f3f6e1d8efe58d7ab5e91856fcc68fa177653b')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn alt" href="README-التثبيت-والتعديل.md" download>⬇ تحميل</a>
+    </div>
+    <div class="fl-row">
+      <div class="fl-ico">🔐</div>
+      <div class="fl-info">
+        <div class="fl-name">SHA256SUMS.txt</div>
+        <div class="fl-desc">بصمات SHA-256 لجميع ملفات الحزمة للتحقق من السلامة</div>
+        <div class="fl-meta">609 بايت • SHA-256: 318c4e9a14…b29a5b <button class="fl-copy" onclick="cp(this,'318c4e9a14693f7daeb60fc35858448257e05abef7046079a65b9c6e89b29a5b')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn alt" href="SHA256SUMS.txt" download>⬇ تحميل</a>
+    </div>
+    <div class="fl-row">
+      <div class="fl-ico">🔄</div>
+      <div class="fl-info">
+        <div class="fl-name">update.json</div>
+        <div class="fl-desc">نموذج فحص التحديثات داخل التطبيق (versionCode 17)</div>
+        <div class="fl-meta">1022 بايت • SHA-256: db7c04faf6…f6ac58 <button class="fl-copy" onclick="cp(this,'db7c04faf602b490e087b6b6141ab65c2973864d0902bb52c6cf790ff6f6ac58')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn alt" href="update.json" download>⬇ تحميل</a>
+    </div>
+    <div class="fl-row">
+      <div class="fl-ico">🛠</div>
+      <div class="fl-info">
+        <div class="fl-name">build-release.sh</div>
+        <div class="fl-desc">سكربت البناء والتوقيع الآلي (VER=1.9.4 / CODE=17)</div>
+        <div class="fl-meta">3.3 KB • SHA-256: 48af68849d…1ff0ec <button class="fl-copy" onclick="cp(this,'48af68849dda684fe8b97ebdc2748eb1aa354ffad495234ba96154dafe1ff0ec')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn alt" href="build-release.sh" download>⬇ تحميل</a>
+    </div>
+    <div class="fl-row">
+      <div class="fl-ico">✅</div>
+      <div class="fl-info">
+        <div class="fl-name">verify-release.sh</div>
+        <div class="fl-desc">سكربت الفحص المستمر لسلامة الإصدار</div>
+        <div class="fl-meta">5.0 KB • SHA-256: 6cebd45566…65813a <button class="fl-copy" onclick="cp(this,'6cebd45566909cdfe46522b1acf938b4c92f5a7711ab9d3b6847b198a065813a')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn alt" href="verify-release.sh" download>⬇ تحميل</a>
+    </div>
+    <div class="fl-row">
+      <div class="fl-ico">🕰</div>
+      <div class="fl-info">
+        <div class="fl-name">Masrofi-v1.7.0.apk</div>
+        <div class="fl-desc">إصدار قديم مرجعي بتوقيع قديم — لا يرقّى مباشرة إلى v1.9.4</div>
+        <div class="fl-meta">340.4 KB • SHA-256: db0cc2ef6c…e0795e <button class="fl-copy" onclick="cp(this,'db0cc2ef6c02a0040e06ccbb5a235be2fd10dad755736ca0ed84eddb10e0795e')">نسخ البصمة</button></div>
+      </div>
+      <a class="fl-btn alt" href="Masrofi-v1.7.0.apk" download>⬇ تحميل</a>
+    </div>
+    </div>
   </div>
+  <!-- FILELIST:END -->
 
   <div class="card">
     <h3>🛡 الخصوصية</h3>
@@ -176,7 +261,7 @@
 
   <footer>
     <p>تطوير <b>مــروان السيــدي | Marwan Alsidi</b> • دولــة لــيـبـيـا 🇱🇾 • Alsidi Group</p>
-    <p>مصروفي v1.9.3 (versionCode 16) — صفحة مكتفية ذاتياً تعمل دون إنترنت</p>
+    <p>مصروفي v1.9.4 (versionCode 17) — صفحة مكتفية ذاتياً تعمل دون إنترنت</p>
   </footer>
 </div>
 <div class="copied" id="copied">✔ تم النسخ</div>
