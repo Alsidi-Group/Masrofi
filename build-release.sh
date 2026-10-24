@@ -10,8 +10,8 @@
 set -euo pipefail
 
 # -------- إعدادات الإصدار (المصدر الوحيد للحقيقة) --------
-VER="1.9.6"            # versionName
-VERSION_CODE="19"      # versionCode
+VER="1.9.7"            # versionName
+VERSION_CODE="20"      # versionCode
 ALIAS="masrofi"
 KS_PASS='Masrofi@2026'
 # يمكن تجاوزها مؤقتاً:  bash build-release.sh <versionName> <versionCode>
