@@ -1,11 +1,23 @@
-# مصروفي v1.9.4 — دليل التثبيت والتعديل
+# مصروفي v1.9.5 — دليل التثبيت والتعديل
 
 **المطوّر:** مــروان السيــدي | Marwan Alsidi • دولــة لــيـبـيـا 🇱🇾 • Alsidi Group
-**الحزمة:** `com.marwanalsidi.masrofi` • versionCode **16** • versionName **1.9.4**
+**الحزمة:** `com.marwanalsidi.masrofi` • versionCode **18** • versionName **1.9.5**
 
 ---
 
-## ■ ما الجديد في 1.9.3
+## ■ ما الجديد في v1.9.5 (code 18)
+
+- **إصلاح بلاغ «خطأ في اختيار قائمة الدفع الإلكتروني»:** التشخيص بيّن أن جسمي `pickPay()` و`pickPayGroup(I)`
+  كانا غير محميين بعد prologue الـdismiss — أي استثناء بيئي (توكن نافذة/توقيت vendor) يصل غلاف
+  `Ui$1`/`Ui$3` ويُظهر توست «توقف الإجراء — تم تسجيل الخطأ للمطوّر».
+- **الحل — دفاع بثلاث طبقات:** (1) كل جسم محمي بـtry/catchall كامل مع تسجيل صامت، (2) زر «رجوع» (`$13`)
+  و`$11.run()` مغلّفان بلا استثناءات هاربة، (3) **حوار احتياطي أصلي** `AlertDialog.Builder.setItems`
+  يفتح القائمة تلقائياً لو فشل البناء المخصص — نفس الخيارات ونفس منطق `$12` المحصّن.
+- كلاسان جديدان: `AddExpenseActivity$16` (مستمع عناصر الحوار الاحتياطي → `$12`) و`AddExpenseActivity$17`
+  (مستمع فئات الحوار الاحتياطي → `access$700`). `$14`/`$15` الأصليتان (من `save()`) لم تُمسّا.
+- مواضع التعديل: `AddExpenseActivity.smali` (pickPay + pickPayGroup إعادة كتابة)، `$11`/`$13` (تغليف)،
+  `$16`/`$17` (جديدان).
+
 ## ■ ما الجديد في v1.9.4
 - **التحصين العميق لمسار اختيار طريقة الدفع** (متابعة بلاغ رسالة «توقف الإجراء — تم تسجيل الخطأ للمطوّر»
   عند اختيار نوع الدفع): الفحص الساكن الشامل لم يجد تعليمة مفردة جانية، لذا اعتُمد دفاع عميق يجعل النتيجة
@@ -20,7 +32,7 @@
 - مواضع التعديل: `AddExpenseActivity$12.smali` (إعادة كتابة كاملة)، `AddExpenseActivity.smali`
   (prologues محمية)، `CrashLog.smali` (+captureClick)، `Ui$1.smali`/`Ui$3.smali` (الربط).
 
-## ■ ما الجديد في v1.9.4
+## ■ ما الجديد في v1.9.3
 - **الإصلاح الجذري لبلاغ «عند الضغط على خيارات الدفع لا يوجد نقر»:** السبب الجذري أن حوارات اختيار
   طريقة الدفع لم تكن تُغلق بعد الاختيار (عكس قائمة المحلات التي تستدعي `dismiss()`)، والتحديث كان
   يحدث في نموذج الحركة خلف الحوار المفتوح بلا أي استجابة مرئية — فيبدو النقر ميّتاً.
@@ -53,8 +65,8 @@
 
 | الملف | الوصف |
 |---|---|
-| `Masrofi-v1.9.4.apk` | التطبيق الجاهز للتثبيت (موقّع، 417 KB تقريباً) |
-| `Masrofi-apktool-decoded.zip` | المشروع مفكوكاً بالكامل (Smali + الموارد + AndroidManifest) — مجلد `decoded-v1.9.4/` |
+| `Masrofi-v1.9.5.apk` | التطبيق الجاهز للتثبيت (موقّع، 416 KB تقريباً) |
+| `Masrofi-apktool-decoded.zip` | المشروع مفكوكاً بالكامل (Smali + الموارد + AndroidManifest) — مجلد `decoded-v1.9.5/` |
 | `update.json` | نموذج فحص التحديثات داخل التطبيق (versionCode 14 / versionName 1.9.4) |
 | `index.html` | صفحة تحميل عربية أنيقة **مكتفة ذاتياً** — تعمل دون إنترنت |
 | `build-release.sh` | سكربت البناء والتوقيع الآلي (VER=1.9.4 / VERSION_CODE=17 أعلى السكربت) |
@@ -75,13 +87,13 @@
 
 - **من لديه v1.4.0 – v1.6.0:** أندرويد سيرفض التثبيت فوق القديم. **احذف الإصدار القديم أولاً**، وصدّر إيصالاتك من داخل التطبيق قبل الحذف (قاعدة البيانات محلية وتُحذف مع التطبيق).
 - **بصمة الشهادة الجديدة (Cert SHA-256):**
-  `abcc93eb60ec8042822eb4b162dbf3f20a11293644bd1d9f0731dd9a76becb97`
-- **بصمة APK ‏v1.9.4 (ملف SHA-256):**
+  `bd40a884725f9a121f6f4761bb838e20d040a846f9e8a10fd14e6c0b00989e1f`
+- **بصمة APK ‏v1.9.5 (ملف SHA-256):**
   `9631b118934fae977c8c694f43b87cfa2dec48f6b40fbef1b8b4b79a8dc33933`
 
 ## ■ التثبيت على الهاتف
 
-1. انقل `Masrofi-v1.9.4.apk` إلى الهاتف وافتحه.
+1. انقل `Masrofi-v1.9.5.apk` إلى الهاتف وافتحه.
 2. فعّل «التثبيت من مصادر غير معروفة» إن طُلب منك.
 3. إن كان لديك إصدار سابق: احذفه أولاً (بعد تصدير الإيصالات).
 4. أنشئ حساباً محلياً أو اختر Gmail، ثم أضف راتبك وابدأ.
@@ -89,10 +101,10 @@
 ## ■ التثبيت عبر ADB (للمطورين)
 
 ```bash
-adb install -r Masrofi-v1.9.4.apk
+adb install -r Masrofi-v1.9.5.apk
 # بعد حذف إصدار قديم بتوقيع مختلف:
 adb uninstall com.marwanalsidi.masrofi
-adb install Masrofi-v1.9.4.apk
+adb install Masrofi-v1.9.5.apk
 ```
 
 ## ■ التحقق من سلامة الملفات
@@ -105,17 +117,17 @@ bash verify-release.sh
 sha256sum -c SHA256SUMS.txt
 
 # فحص التوقيع والشهادة:
-apksigner verify --print-certs Masrofi-v1.9.4.apk
+apksigner verify --print-certs Masrofi-v1.9.5.apk
 ```
 
 سكربت `verify-release.sh` يتحقق من: وجود الملفات السبعة، مطابقة البصمات، صلاحية التوقيع، تطابق الشهادة مع البصمة المعروفة، badging الحزمة والإصدار، اتساق `update.json`، واكتمال `index.html` — بأكواد خروج مناسبة للاستخدام في CI.
 
 ## ■ التعديل وإعادة البناء (apktool)
 
-1. فك الحزمة: `unzip Masrofi-apktool-decoded.zip` → مجلد `decoded-v1.9.4/`
+1. فك الحزمة: `unzip Masrofi-apktool-decoded.zip` → مجلد `decoded-v1.9.5/`
 2. أشهر التعديلات:
-   - الألوان والمظاهر: `decoded-v1.9.4/res/values/colors.xml`
-   - النصوص وروابط التحديث واسم المطور (`about_dev`): `decoded-v1.9.4/res/values/strings.xml` وبقية ملفات اللغات
+   - الألوان والمظاهر: `decoded-v1.9.5/res/values/colors.xml`
+   - النصوص وروابط التحديث واسم المطور (`about_dev`): `decoded-v1.9.5/res/values/strings.xml` وبقية ملفات اللغات
    - الشعار (محفظة + فلوس + ساعة): `res/drawable/ic_launcher_fg.xml` + `res/drawable/img_logo.xml` + خلفية `res/drawable/ic_launcher_bg.xml`
    - الآلة الحاسبة: `smali/com/marwanalsidi/masrofi/CalculatorActivity.smali` (تُبنى واجهتها برمجياً بالكامل)
    - مسار اختيار الدفع: `smali/com/marwanalsidi/masrofi/AddExpenseActivity$12.smali` (معالج بحماية null)
@@ -135,9 +147,9 @@ bash build-release.sh 1.9.4 15     # إصدار جديد: يرقّع apktool.yml
 ## ■ النشر وروابط التحميل المباشر
 
 1. ارفع ملفات هذه الحزمة إلى جذر المستودع `Alsidi-Group/Masrofi` (فرع main):
-   `Masrofi-v1.9.4.apk` + `update.json` + `index.html`
+   `Masrofi-v1.9.5.apk` + `update.json` + `index.html`
 2. يصبح التحميل المباشر متاحاً على:
-   `https://github.com/Alsidi-Group/Masrofi/raw/main/Masrofi-v1.9.4.apk`
+   `https://github.com/Alsidi-Group/Masrofi/raw/main/Masrofi-v1.9.5.apk`
 3. تطبيق v1.7.0+ سيرى التحديثات القادمة تلقائياً عبر `update.json` على GitHub.
 4. إصدار GitHub Release رسمي اختياري: Attach the APK → وسم `v1.9.4`.
 5. يمكنك أيضاً استضافة `index.html` وAPK على أي استضافة ثابتة (GitHub Pages مثلاً) — الصفحة مكتفة ذاتياً وتعمل كما هي.
