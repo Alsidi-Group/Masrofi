@@ -1,9 +1,30 @@
-# مصروفي v1.9.7 — دليل التثبيت والتعديل
+# مصروفي v1.9.8 — دليل التثبيت والتعديل
 
 **المطوّر:** مــروان السيــدي | Marwan Alsidi • دولــة لــيـبـيـا 🇱🇾 • Alsidi Group
-**الحزمة:** `com.marwanalsidi.masrofi` • versionCode **20** • versionName **1.9.7**
+**الحزمة:** `com.marwanalsidi.masrofi` • versionCode **21** • versionName **1.9.8**
 
 ---
+
+## ■ ما الجديد في v1.9.8 (code 21)
+
+- **ثلاث ميزات جديدة بطلب المستخدمين:**
+  1. **الرصيد التراكمي — المرتب الجديد فوق المتبقي:** بطاقة الرصيد في الشاشة الرئيسية
+     وترويسة قائمة المصروفات صارت = كل المرتبات − كل المصروفات؛ أي مرتب جديد يُضاف
+     تلقائياً على الرصيد المتبقي السابق، وعمود «المتبقي» في الجدول يبدأ من رصيد ما
+     قبل الشهر (remainingMap: balance + sumMonth) فيطابق آخر صف الرصيد الحالي.
+  2. **تعديل/حذف المصروفات من القائمة:** ضغط مطوّل على أي صف في «المصروفات» يفتح قائمة
+     إجراءات نظامية (AlertDialog.Builder.setItems — نمط قوائم الدفع المحصّنة):
+     تعديل المبلغ / تعديل العنصر / حذف نهائي مع تأكيد + توست تأكيد + تحديث فوري.
+     الجذر: 7 كلاسات جديدة (DataActivity$7-$11) + 3 دوال DBHelper
+     (updateExpenseAmount/updateExpenseNote/deleteExpense) + عمود id في استعلام الشهر.
+  3. **قائمة العناصر المشتراة المتسلسلة:** صف جديد في شاشة إضافة مصروف يعرض العناصر
+     المستفادة تلقائياً من ملاحظات المصروفات (العنصر + عدد مرات الشراء)، مرتبة
+     بالأكثر تكراراً ثم بالأحدث، بترقيم متسلسل 1. 2. 3. — وضغطة واحدة تطبق العنصر.
+- مواضع التعديل: DBHelper/MainActivity/DataActivity/AddExpenseActivity + 7 كلاسات
+  جديدة + موارد جديدة (rowItems = 0x7f050034 + 15 نصاً 0x7f080109–0x7f080117).
+- درس مطبق: صفر وصول مباشر لحقول خاصة عبر حدود الكلاسات — كل المنطق عبر موصّلات
+  package-private، والإغلاق أولاً عبر وسيط الحوار + CrashLog.capture (منهجية 1.9.7).
+- تحقق DEX عميق: 23/23 فحصاً بنيوياً + تدقيق وصول الحقول لكل الكلاسات الجديدة.
 
 ## ■ ما الجديد في v1.9.7 (code 20)
 
@@ -92,8 +113,8 @@
 
 | الملف | الوصف |
 |---|---|
-| `Masrofi-v1.9.7.apk` | التطبيق الجاهز للتثبيت (موقّع، 416 KB تقريباً) |
-| `Masrofi-apktool-decoded.zip` | المشروع مفكوكاً بالكامل (Smali + الموارد + AndroidManifest) — مجلد `decoded-v1.9.7/` |
+| `Masrofi-v1.9.8.apk` | التطبيق الجاهز للتثبيت (موقّع، 420 KB تقريباً) |
+| `Masrofi-apktool-decoded.zip` | المشروع مفكوكاً بالكامل (Smali + الموارد + AndroidManifest) — مجلد `decoded-v1.9.8/` |
 | `update.json` | نموذج فحص التحديثات داخل التطبيق (versionCode 14 / versionName 1.9.4) |
 | `index.html` | صفحة تحميل عربية أنيقة **مكتفة ذاتياً** — تعمل دون إنترنت |
 | `build-release.sh` | سكربت البناء والتوقيع الآلي (VER=1.9.4 / VERSION_CODE=17 أعلى السكربت) |
@@ -114,13 +135,13 @@
 
 - **من لديه v1.4.0 – v1.6.0:** أندرويد سيرفض التثبيت فوق القديم. **احذف الإصدار القديم أولاً**، وصدّر إيصالاتك من داخل التطبيق قبل الحذف (قاعدة البيانات محلية وتُحذف مع التطبيق).
 - **بصمة الشهادة الجديدة (Cert SHA-256):**
-  `4bd940784da3106a4cc3d5c2e4ba7fd771a76e543afcfd40bc73863e97bb6477`
-- **بصمة APK ‏v1.9.7 (ملف SHA-256):**
+  `550aa9caaf4a89223e0a2f529afc1c5b9a74d72a6df3156fcae9bb1e4aa8abf3`
+- **بصمة APK ‏v1.9.8 (ملف SHA-256):**
   `9631b118934fae977c8c694f43b87cfa2dec48f6b40fbef1b8b4b79a8dc33933`
 
 ## ■ التثبيت على الهاتف
 
-1. انقل `Masrofi-v1.9.7.apk` إلى الهاتف وافتحه.
+1. انقل `Masrofi-v1.9.8.apk` إلى الهاتف وافتحه.
 2. فعّل «التثبيت من مصادر غير معروفة» إن طُلب منك.
 3. إن كان لديك إصدار سابق: احذفه أولاً (بعد تصدير الإيصالات).
 4. أنشئ حساباً محلياً أو اختر Gmail، ثم أضف راتبك وابدأ.
@@ -128,10 +149,10 @@
 ## ■ التثبيت عبر ADB (للمطورين)
 
 ```bash
-adb install -r Masrofi-v1.9.7.apk
+adb install -r Masrofi-v1.9.8.apk
 # بعد حذف إصدار قديم بتوقيع مختلف:
 adb uninstall com.marwanalsidi.masrofi
-adb install Masrofi-v1.9.7.apk
+adb install Masrofi-v1.9.8.apk
 ```
 
 ## ■ التحقق من سلامة الملفات
@@ -144,17 +165,17 @@ bash verify-release.sh
 sha256sum -c SHA256SUMS.txt
 
 # فحص التوقيع والشهادة:
-apksigner verify --print-certs Masrofi-v1.9.7.apk
+apksigner verify --print-certs Masrofi-v1.9.8.apk
 ```
 
 سكربت `verify-release.sh` يتحقق من: وجود الملفات السبعة، مطابقة البصمات، صلاحية التوقيع، تطابق الشهادة مع البصمة المعروفة، badging الحزمة والإصدار، اتساق `update.json`، واكتمال `index.html` — بأكواد خروج مناسبة للاستخدام في CI.
 
 ## ■ التعديل وإعادة البناء (apktool)
 
-1. فك الحزمة: `unzip Masrofi-apktool-decoded.zip` → مجلد `decoded-v1.9.7/`
+1. فك الحزمة: `unzip Masrofi-apktool-decoded.zip` → مجلد `decoded-v1.9.8/`
 2. أشهر التعديلات:
-   - الألوان والمظاهر: `decoded-v1.9.7/res/values/colors.xml`
-   - النصوص وروابط التحديث واسم المطور (`about_dev`): `decoded-v1.9.7/res/values/strings.xml` وبقية ملفات اللغات
+   - الألوان والمظاهر: `decoded-v1.9.8/res/values/colors.xml`
+   - النصوص وروابط التحديث واسم المطور (`about_dev`): `decoded-v1.9.8/res/values/strings.xml` وبقية ملفات اللغات
    - الشعار (محفظة + فلوس + ساعة): `res/drawable/ic_launcher_fg.xml` + `res/drawable/img_logo.xml` + خلفية `res/drawable/ic_launcher_bg.xml`
    - الآلة الحاسبة: `smali/com/marwanalsidi/masrofi/CalculatorActivity.smali` (تُبنى واجهتها برمجياً بالكامل)
    - مسار اختيار الدفع: `smali/com/marwanalsidi/masrofi/AddExpenseActivity$12.smali` (معالج بحماية null)
@@ -174,9 +195,9 @@ bash build-release.sh 1.9.4 15     # إصدار جديد: يرقّع apktool.yml
 ## ■ النشر وروابط التحميل المباشر
 
 1. ارفع ملفات هذه الحزمة إلى جذر المستودع `Alsidi-Group/Masrofi` (فرع main):
-   `Masrofi-v1.9.7.apk` + `update.json` + `index.html`
+   `Masrofi-v1.9.8.apk` + `update.json` + `index.html`
 2. يصبح التحميل المباشر متاحاً على:
-   `https://github.com/Alsidi-Group/Masrofi/raw/main/Masrofi-v1.9.7.apk`
+   `https://github.com/Alsidi-Group/Masrofi/raw/main/Masrofi-v1.9.8.apk`
 3. تطبيق v1.7.0+ سيرى التحديثات القادمة تلقائياً عبر `update.json` على GitHub.
 4. إصدار GitHub Release رسمي اختياري: Attach the APK → وسم `v1.9.4`.
 5. يمكنك أيضاً استضافة `index.html` وAPK على أي استضافة ثابتة (GitHub Pages مثلاً) — الصفحة مكتفة ذاتياً وتعمل كما هي.
