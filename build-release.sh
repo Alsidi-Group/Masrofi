@@ -10,7 +10,7 @@
 set -euo pipefail
 
 # -------- إعدادات الإصدار (المصدر الوحيد للحقيقة) --------
-VER="1.9.9"            # versionName
+VER="2.0.0"            # versionName
 VERSION_CODE="21"      # versionCode
 ALIAS="masrofi"
 KS_PASS='Masrofi@2026'
