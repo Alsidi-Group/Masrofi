@@ -9,8 +9,8 @@ set -u
 PKG="${1:-.}"
 cd "$PKG" 2>/dev/null || { echo "✗ المجلد غير موجود: $PKG"; exit 1; }
 
-VER="1.9.5"
-CODE="18"
+VER="1.9.6"
+CODE="19"
 APK="Masrofi-v${VER}.apk"
 DEC="Masrofi-apktool-decoded.zip"
 SDK="${ANDROID_BUILD_TOOLS:-}"   # يمكن تمرير مسار build-tools هنا
