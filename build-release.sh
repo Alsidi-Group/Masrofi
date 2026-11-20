@@ -10,8 +10,8 @@
 set -euo pipefail
 
 # -------- إعدادات الإصدار (المصدر الوحيد للحقيقة) --------
-VER="2.0.0"            # versionName
-VERSION_CODE="21"      # versionCode
+VER="2.2.0"            # versionName
+VERSION_CODE="25"      # versionCode
 ALIAS="masrofi"
 KS_PASS='Masrofi@2026'
 # يمكن تجاوزها مؤقتاً:  bash build-release.sh <versionName> <versionCode>
@@ -21,7 +21,7 @@ VERSION_CODE="${2:-$VERSION_CODE}"
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 SRC="${SRC:-$HERE/decoded-v${VER}}"
-SDK="${ANDROID_BUILD_TOOLS:-/home/z/my-project/android/sdk/android-14}"
+SDK="${ANDROID_BUILD_TOOLS:-/home/z/my-project/android-build/android-14}"
 APKTOOL="${APKTOOL:-/home/z/my-project/android-build/apktool.jar}"
 KS="${KS:-/home/z/my-project/android-build/masrofi.keystore}"
 OUT="$HERE/Masrofi-v${VER}.apk"
@@ -67,6 +67,7 @@ sha256sum "$OUT" | sed 's/^/  SHA256 /'
 
 # 5) تجديد البصمات وصفحة التحميل تلقائياً بعد كل إصدار
 cd "$HERE"
-sha256sum "Masrofi-v${VER}.apk" "Masrofi-apktool-decoded.zip" "update.json" "index.html" > SHA256SUMS.txt 2>/dev/null || true
+# ملاحظة: index.html وREADME تعرضان بصمات — لا تدخلا في SHA256SUMS لتفادي الدوران
+  sha256sum "Masrofi-v${VER}.apk" "Masrofi-apktool-decoded.zip" "update.json" > SHA256SUMS.txt 2>/dev/null || true
 echo "── تم: $OUT جاهز للتحميل المباشر"
 echo "  لا تنسَ: حدّث versionName/versionCode/apkUrl في update.json ليتطابق مع الإصدار الجديد."

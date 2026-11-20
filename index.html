@@ -3,41 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مصروفي v2.0.0 — التحميل المباشر</title>
+<title>مصروفي v2.2.0 — التحميل المباشر</title>
 <style>
   :root{
-    --bg:#0c1512; --card:#12211b; --card2:#16281f; --line:#244636;
-    --em:#10b981; --em2:#34d399; --txt:#e8f5ee; --mut:#8fb8a4; --gold:#fbbf24;
+    --bg:#110d1f; --card:#1a1430; --card2:#211942; --line:#332a5e;
+    --em:#8a63ec; --em2:#a085f6; --txt:#ece9f7; --mut:#9d93bd; --gold:#ffb27d;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.9;min-height:100vh}
   .wrap{max-width:880px;margin:0 auto;padding:24px 16px 64px}
   header{text-align:center;padding:44px 12px 30px}
-  .logo{width:84px;height:84px;border-radius:22px;background:linear-gradient(135deg,#059669,#10b981 55%,#6ee7b7);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 34px rgba(16,185,129,.35);margin-bottom:18px}
+  .logo{width:84px;height:84px;border-radius:22px;background:linear-gradient(135deg,#451cc0,#572cd8 55%,#a085f6);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 34px rgba(87,44,216,.4);margin-bottom:18px}
   h1{font-size:2.1rem;font-weight:800;letter-spacing:-.5px}
   h1 span{color:var(--em2)}
   .sub{color:var(--mut);font-size:1.02rem;margin-top:6px}
   .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
   .badge{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 15px;font-size:.82rem;color:var(--em2)}
   .dl-box{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:30px 26px;text-align:center;margin:22px 0;box-shadow:0 14px 44px rgba(0,0,0,.35)}
-  .btn{display:inline-block;background:linear-gradient(135deg,#059669,#10b981);color:#04110b;font-weight:800;font-size:1.14rem;text-decoration:none;border-radius:14px;padding:16px 44px;box-shadow:0 8px 26px rgba(16,185,129,.4);transition:.2s}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(16,185,129,.55)}
+  .btn{display:inline-block;background:linear-gradient(135deg,#ef6220,#ff7d3b);color:#1d0d02;font-weight:800;font-size:1.14rem;text-decoration:none;border-radius:14px;padding:16px 44px;box-shadow:0 8px 26px rgba(255,125,59,.4);transition:.2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,125,59,.55)}
   .btn small{display:block;font-size:.72rem;font-weight:600;opacity:.75}
   .meta{margin-top:16px;color:var(--mut);font-size:.86rem}
   code,.mono{font-family:"Courier New",monospace;direction:ltr;unicode-bidi:embed}
-  .hash{background:#0a1410;border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:.74rem;color:var(--em2);word-break:break-all;margin-top:12px;cursor:pointer;transition:.15s}
+  .hash{background:#0d0a1a;border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:.74rem;color:var(--em2);word-break:break-all;margin-top:12px;cursor:pointer;transition:.15s}
   .hash:hover{border-color:var(--em)}
   .hash .lbl{color:var(--mut);display:block;font-size:.72rem;margin-bottom:2px}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:22px 0}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
   .card h3{color:var(--em2);font-size:1rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
   .card ul{list-style:none}
-  .card li{padding:5px 0;font-size:.9rem;color:var(--txt);border-bottom:1px solid rgba(36,70,54,.5)}
+  .card li{padding:5px 0;font-size:.9rem;color:var(--txt);border-bottom:1px solid rgba(51,42,94,.5)}
   .card li:last-child{border-bottom:0}
   .card li::before{content:"◂";color:var(--em);margin-left:8px;font-size:.8rem}
-  .warn{background:linear-gradient(160deg,#2a1f08,#1f1806);border:1px solid #6b5410;border-radius:16px;padding:20px 22px;margin:22px 0}
+  .warn{background:linear-gradient(160deg,#2a1608,#1f1006);border:1px solid #6b3c10;border-radius:16px;padding:20px 22px;margin:22px 0}
   .warn h3{color:var(--gold);font-size:1.02rem;margin-bottom:8px}
-  .warn p{font-size:.92rem;color:#f3e8c8}
+  .warn p{font-size:.92rem;color:#f3e4c8}
   ol.steps{margin:10px 24px 0 0}
   ol.steps li{padding:6px 0;font-size:.93rem}
   ol.steps b{color:var(--em2)}
@@ -48,21 +48,21 @@
   td .mono{font-size:.78rem;color:var(--mut)}
   footer{text-align:center;color:var(--mut);font-size:.82rem;margin-top:40px;border-top:1px solid var(--line);padding-top:22px}
   footer b{color:var(--em2)}
-  .copied{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--em);color:#04110b;font-weight:700;padding:9px 22px;border-radius:999px;font-size:.85rem;opacity:0;pointer-events:none;transition:.3s}
+  .copied{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--em);color:#160b28;font-weight:700;padding:9px 22px;border-radius:999px;font-size:.85rem;opacity:0;pointer-events:none;transition:.3s}
   .copied.show{opacity:1}
   .fl{display:flex;flex-direction:column;gap:10px;margin-top:12px}
   .fl-row{display:flex;align-items:center;gap:14px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;transition:.15s}
   .fl-row:hover{border-color:var(--em)}
-  .fl-main{border-color:#2f6b52;background:linear-gradient(160deg,#143026,#122a20)}
+  .fl-main{border-color:#3d2f7d;background:linear-gradient(160deg,#221b45,#1c1638)}
   .fl-ico{font-size:1.5rem;width:40px;text-align:center;flex-shrink:0}
   .fl-info{flex:1;min-width:0}
   .fl-name{font-weight:800;font-size:.95rem;direction:ltr;unicode-bidi:embed;word-break:break-all}
   .fl-desc{font-size:.82rem;color:var(--mut);margin-top:2px}
   .fl-meta{font-size:.7rem;color:var(--em2);margin-top:5px;direction:ltr;unicode-bidi:embed;font-family:"Courier New",monospace;word-break:break-all}
-  .fl-copy{cursor:pointer;border:1px solid var(--line);border-radius:6px;padding:1px 8px;color:var(--em2);background:#0a1410;font-size:.68rem;font-family:inherit;direction:rtl}
+  .fl-copy{cursor:pointer;border:1px solid var(--line);border-radius:6px;padding:1px 8px;color:var(--em2);background:#0d0a1a;font-size:.68rem;font-family:inherit;direction:rtl}
   .fl-copy:hover{border-color:var(--em)}
-  .fl-btn{background:linear-gradient(135deg,#059669,#10b981);color:#04110b;font-weight:800;text-decoration:none;border-radius:10px;padding:10px 22px;font-size:.9rem;white-space:nowrap;box-shadow:0 4px 14px rgba(16,185,129,.3);transition:.2s;flex-shrink:0}
-  .fl-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(16,185,129,.5)}
+  .fl-btn{background:linear-gradient(135deg,#ef6220,#ff7d3b);color:#1d0d02;font-weight:800;text-decoration:none;border-radius:10px;padding:10px 22px;font-size:.9rem;white-space:nowrap;box-shadow:0 4px 14px rgba(255,125,59,.3);transition:.2s;flex-shrink:0}
+  .fl-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,125,59,.5)}
   .fl-btn.alt{background:var(--card);color:var(--em2);border:1px solid var(--line);box-shadow:none}
   .fl-btn.alt:hover{border-color:var(--em);transform:none}
   .fl-hint{font-size:.86rem;color:var(--mut);margin-top:6px}
@@ -76,22 +76,22 @@
   <header>
     <div class="logo">
       <svg width="46" height="46" viewBox="0 0 108 108" fill="none">
-        <rect x="32" y="26" width="40" height="24" rx="5" fill="#FCD34D"/>
-        <circle cx="52" cy="37" r="6.5" fill="#F59E0B"/>
+        <rect x="32" y="26" width="40" height="24" rx="5" fill="#FFB27D"/>
+        <circle cx="52" cy="37" r="6.5" fill="#EF6220"/>
         <rect x="24" y="44" width="56" height="38" rx="11" fill="#ffffff"/>
-        <rect x="35" y="53" width="22" height="8" rx="4" fill="#6EE7B7"/>
-        <circle cx="72" cy="70" r="13.5" fill="#047857"/>
+        <rect x="35" y="53" width="22" height="8" rx="4" fill="#B9A6F8"/>
+        <circle cx="72" cy="70" r="13.5" fill="#3E1BA8"/>
         <circle cx="72" cy="70" r="10.5" fill="#ffffff"/>
-        <rect x="71.2" y="64.5" width="1.7" height="6.7" fill="#047857"/>
-        <rect x="71.2" y="69.2" width="6.8" height="1.7" fill="#047857"/>
+        <rect x="71.2" y="64.5" width="1.7" height="6.7" fill="#3E1BA8"/>
+        <rect x="71.2" y="69.2" width="6.8" height="1.7" fill="#3E1BA8"/>
       </svg>
     </div>
-    <h1>مصروفي <span>v2.0.0</span></h1>
+    <h1>مصروفي <span>v2.2.0</span></h1>
     <p class="sub">تطبيق إدارة المصروفات الشخصية — مروان السيدي (ليبيا) • تحميل مباشر بلا وسيط</p>
     <div class="badges">
-      <span class="badge">versionCode 23</span>
-      <span class="badge">إصلاح جذري لتعديل/حذف المصروفات والمرتب (VerifyError) + أداة تدقيق آلي</span>
-      <span class="badge">شعار: محفظة + فلوس + ساعة</span>
+      <span class="badge">versionCode 25</span>
+      <span class="badge">التصميم مطبق على الشاشات — Splash بزر «ابدأ» وبطاقات بنفسجية</span>
+      <span class="badge">أيقونة جديدة بالهوية البنفسجية</span>
       <span class="badge">حاسبة ملء الشاشة</span>
       <span class="badge">أرقام غربية 0-9</span>
       <span class="badge">Android 11+ (API 30)</span>
@@ -103,35 +103,34 @@
   </header>
 
   <div class="dl-box">
-    <a class="btn" href="Masrofi-v2.0.0.apk" download>
+    <a class="btn" href="Masrofi-v2.2.0.apk" download>
       ⬇ تحميل التطبيق مباشرة
-      <small>Masrofi-v2.0.0.apk — ‏428.6 KB</small>
+      <small>Masrofi-v2.2.0.apk — ‏396.7 KB</small>
     </a>
-    <p class="meta">آخر تحديث: 24 أكتوبر 2026 • النقر يعمل على الهاتف والكمبيوتر</p>
-    <div class="hash" onclick="cp(this,'112e018cb75ffb5c1d9908965bfaab4ba3c101324f198ca8e00a99de0e3c7ac2')" title="انقر للنسخ">
+    <p class="meta">آخر تحديث: 20 نوفمبر 2026 • النقر يعمل على الهاتف والكمبيوتر</p>
+    <div class="hash" onclick="cp(this,'a883a620f08a9079d9acf4a2f44e576f43acf230bc9ef5f7851e2c680892e5c8')" title="انقر للنسخ">
       <span class="lbl">بصمة الملف SHA-256 (انقر للنسخ)</span>
-      <span class="mono">112e018cb75ffb5c1d9908965bfaab4ba3c101324f198ca8e00a99de0e3c7ac2</span>
+      <span class="mono">a883a620f08a9079d9acf4a2f44e576f43acf230bc9ef5f7851e2c680892e5c8</span>
     </div>
-    <div class="hash" onclick="cp(this,'abcc93eb60ec8042822eb4b162dbf3f20a11293644bd1d9f0731dd9a76becb97')" title="انقر للنسخ">
+    <div class="hash" onclick="cp(this,'de0058a896a49b7d4c81d4981e6bc5aeafb9d55045921315fe195651725a152c')" title="انقر للنسخ">
       <span class="lbl">بصمة شهادة التوقيع (Cert SHA-256) — انقر للنسخ</span>
-      <span class="mono">abcc93eb60ec8042822eb4b162dbf3f20a11293644bd1d9f0731dd9a76becb97</span>
+      <span class="mono">de0058a896a49b7d4c81d4981e6bc5aeafb9d55045921315fe195651725a152c</span>
     </div>
   </div>
 
   <div class="warn">
-    <h3>⚠ تنبيه مهم لمستخدمي الإصدارات القديمة (v1.4.0 – v1.6.0)</h3>
-    <p>مفتاح التوقيع في هذا الإصدار جديد، وأندرويد لن يقبل التثبيت فوق النسخة القديمة. <b>احذف الإصدار القديم أولاً</b> — وإن كانت لديك بيانات مهمة فاستخدم تصدير الإيصالات من داخل التطبيق قبل الحذف، لأن قاعدة البيانات محلية وتُحذف مع إزالة التطبيق.</p>
+    <h3>⚠ تنبيه مهم لمستخدمي الإصدارات السابقة (حتى v2.0.0)</h3>
+    <p>شهادة توقيع v2.1.0 وv2.2.0 واحدة — <b>الترقية المباشرة من v2.1.0 تعمل بلا حذف</b>. أما من لديه v2.0.0 أو أقدم فأندرويد لن يقبل التثبيت فوق النسخة القديمة: <b>احذف الإصدار القديم أولاً</b> — وإن كانت لديك بيانات مهمة فاستخدم تصدير الإيصالات من داخل التطبيق قبل الحذف، لأن قاعدة البيانات محلية وتُحذف مع إزالة التطبيق.</p>
   </div>
 
   <div class="card" style="margin-bottom:14px">
-    <h3>✨ ما الجديد في v2.0.0 — إصلاح جذري: تعديل/حذف المصروفات والمرتب يعملان الآن</h3>
+    <h3>✨ ما الجديد في v2.2.0 — إكمال تطبيق التصميم على الشاشات</h3>
     <ul>
-      <li><b>إصلاح عاجل لتعديل/حذف المصروفات:</b> قائمة الإجراءات (تعديل المبلغ / تعديل العنصر / حذف نهائي) كانت تفشل صامتة بخطأ تحقق داخلي (VerifyError) — أُعيد بناء الحوارات كاملة بخرائط سجلات صحيحة والقائمة تفتح وتعمل فعلياً الآن</li>
-      <li><b>إصلاح عاجل لتعديل/حذف المرتب الشهري:</b> نفس الجذر في سجل آخر التغييرات — قائمة الإجراءات (تعديل المبلغ / حذف نهائي) تعمل الآن والرصيد يُعاد حسابه فوراً</li>
-      <li><b>زر «إلغاء» في كل حوارات التعديل والحذف:</b> مستمع إلغاء نظامي جديد يغلق الحوار بأمان</li>
-      <li><b>أداة تدقيق آلي جديدة في خط البناء:</b> فحص شامل لكل استدعاء (عدد السجلات مقابل توقيع المستدعى) على كامل التطبيق — صفر مخالفات في هذا الإصدار، وهذا النوع من الأخطاء مستحيل التسرب مستقبلاً</li>
-      <li>بقيت كل ميزات 1.9.9: حوار التحديث المنسق بالشعار، الترخيص، واتساب، والنص الجديد — وكل إصلاحات الإصدارات السابقة</li>
-      <li>ترقية مباشرة بنفس الشهادة</li>
+      <li><b>شاشة البداية (لوحة التصميم 01):</b> خلفية بنفسجية متدرجة بألوان الهوية (#7B4EE9 → #451CC0) + شريط الحالة والتنقل بنفسجي بأيقونات فاتحة + <b>زر «ابدأ» برتقالي</b> يدخل التطبيق فوراً — والنص مترجم بكل اللغات الـ13</li>
+      <li><b>الشاشة الرئيسية (لوحة 02):</b> بطاقة الرصيد العائمة أصبحت بنفسجية متدرجة موحدة بدل الانتهاء للبرتقالي، وتسميات الرصيد والراتب والمصروف بلون لافندر فاتح متناسق</li>
+      <li><b>سجل المصروفات (لوحة 03):</b> بطاقة «إجمالي الشهر» بنفسجية عائمة بنص أبيض تعلو قائمة الحركات</li>
+      <li><b>صفر تغيير وظيفي:</b> التعديل في الموارد و27 سطر Smali فقط (شريط الحالة + ربط زر البدء) — تدقيق الاستدعاءات: 0 مخالفات في ملفات التطبيق الـ160</li>
+      <li><b>ترقية مباشرة من v2.1.0</b> — نفس شهادة التوقيع، ومن v2.0.0 أو أقدم احذف القديم أولاً</li>
     </ul>
   </div>
 
@@ -139,25 +138,25 @@
     <div class="card">
       <h3>📲 التثبيت على الهاتف</h3>
       <ol class="steps">
-        <li>حمّل <b>Masrofi-v2.0.0.apk</b> من الزر أعلاه.</li>
+        <li>حمّل <b>Masrofi-v2.2.0.apk</b> من الزر أعلاه.</li>
         <li>افتح الملف وفعّل «التثبيت من مصادر غير معروفة» إن طُلب.</li>
-        <li>أنشئ حساباً محلياً أو سجّل عبر Gmail.</li>
-        <li>أضف راتبك وابدأ التسجيل.</li>
+        <li>من v2.0.0 أو أقدم: احذف الإصدار القديم أولاً (شهادة مختلفة).</li>
+        <li>أنشئ حساباً محلياً أو سجّل عبر Gmail، ثم أضف راتبك وابدأ.</li>
       </ol>
     </div>
     <div class="card">
       <h3>🖥 التثبيت عبر ADB</h3>
       <ol class="steps">
         <li>فعّل «تصحيح USB» من خيارات المطور.</li>
-        <li>ثبّت بالأمر: <code>adb install -r Masrofi-v2.0.0.apk</code></li>
-        <li>لفرض التثبيت النظيف بعد تغيّر التوقيع: <code>adb install -r -d</code> بعد إزالة القديم.</li>
+        <li>ثبّت بالأمر: <code>adb install -r Masrofi-v2.2.0.apk</code></li>
+        <li>لتحديث قاسٍ بعد تغيّر التوقيع: أزل القديم أولاً ثم ثبّت.</li>
       </ol>
     </div>
     <div class="card">
       <h3>✅ التحقق من سلامة الملف</h3>
       <ol class="steps">
-        <li>على الكمبيوتر: <code>sha256sum Masrofi-v2.0.0.apk</code> وقارن بالبصمة أعلاه.</li>
-        <li>المطورون: <code>apksigner verify --print-certs Masrofi-v2.0.0.apk</code></li>
+        <li>على الكمبيوتر: <code>sha256sum Masrofi-v2.2.0.apk</code> وقارن بالبصمة أعلاه.</li>
+        <li>المطورون: <code>apksigner verify --print-certs Masrofi-v2.2.0.apk</code></li>
         <li>الملف <code>SHA256SUMS.txt</code> بجانب الملفات يحوي كل البصمات.</li>
       </ol>
     </div>
@@ -179,18 +178,18 @@
     <div class="fl-row fl-main">
       <div class="fl-ico">📦</div>
       <div class="fl-info">
-        <div class="fl-name">Masrofi-v2.0.0.apk</div>
-        <div class="fl-desc">التطبيق الجاهز للتثبيت — موقّع بشهادة مروان السيدي (versionCode 23)</div>
-        <div class="fl-meta">428.6 KB • SHA-256: 112e018cb7…3c7ac2 <button class="fl-copy" onclick="cp(this,'112e018cb75ffb5c1d9908965bfaab4ba3c101324f198ca8e00a99de0e3c7ac2')">نسخ البصمة</button></div>
+        <div class="fl-name">Masrofi-v2.2.0.apk</div>
+        <div class="fl-desc">التطبيق الجاهز للتثبيت — التصميم مطبق على الشاشات (versionCode 25)</div>
+        <div class="fl-meta">396.7 KB • SHA-256: a883a620f0…92e5c8 <button class="fl-copy" onclick="cp(this,'a883a620f08a9079d9acf4a2f44e576f43acf230bc9ef5f7851e2c680892e5c8')">نسخ البصمة</button></div>
       </div>
-      <a class="fl-btn" href="Masrofi-v2.0.0.apk" download>⬇ تحميل</a>
+      <a class="fl-btn" href="Masrofi-v2.2.0.apk" download>⬇ تحميل</a>
     </div>
     <div class="fl-row">
       <div class="fl-ico">🗂</div>
       <div class="fl-info">
         <div class="fl-name">Masrofi-apktool-decoded.zip</div>
-        <div class="fl-desc">المشروع مفكوكاً بالكامل (Smali + الموارد) لإعادة البناء والتعديل</div>
-        <div class="fl-meta">847.2 KB • SHA-256: 2ca5fa6b79…ee58ce <button class="fl-copy" onclick="cp(this,'2ca5fa6b792749eb0ba22944b03810ae4925f88f9589efd6e54b68bb89ee58ce')">نسخ البصمة</button></div>
+        <div class="fl-desc">المشروع مفكوكاً بالكامل (Smali + الموارد) لإعادة البناء والتعديل — مجلد decoded-v2.2.0</div>
+        <div class="fl-meta">387.6 KB • SHA-256: 43b78e79e2…b0d30c <button class="fl-copy" onclick="cp(this,'43b78e79e20689b54156bf8278a5b557a5b3641a2e0589298489258e85b0d30c')">نسخ البصمة</button></div>
       </div>
       <a class="fl-btn alt" href="Masrofi-apktool-decoded.zip" download>⬇ تحميل</a>
     </div>
@@ -199,7 +198,7 @@
       <div class="fl-info">
         <div class="fl-name">README-التثبيت-والتعديل.md</div>
         <div class="fl-desc">الدليل الشامل للتثبيت والتعديل وإعادة البناء</div>
-        <div class="fl-meta">21.8 KB • SHA-256: 6bfbf8cc05…ff068c <button class="fl-copy" onclick="cp(this,'6bfbf8cc05e0c6d710185a700c0f7a8ad1570938ea0ba2ec51f817d2ffff068c')">نسخ البصمة</button></div>
+        <div class="fl-meta">28.3 KB • SHA-256: 7f17947e84…0ee225 <button class="fl-copy" onclick="cp(this,'7f17947e842a73302158030bd4591338d4d3cb7754cf58ec31e2ff65a10ee225')">نسخ البصمة</button></div>
       </div>
       <a class="fl-btn alt" href="README-التثبيت-والتعديل.md" download>⬇ تحميل</a>
     </div>
@@ -207,8 +206,8 @@
       <div class="fl-ico">🔐</div>
       <div class="fl-info">
         <div class="fl-name">SHA256SUMS.txt</div>
-        <div class="fl-desc">بصمات SHA-256 لجميع ملفات الحزمة للتحقق من السلامة</div>
-        <div class="fl-meta">609 بايت • SHA-256: e1e91c2bae…021f5a <button class="fl-copy" onclick="cp(this,'e1e91c2baeda9d7e76473389bb2c58bfb54dbf0055bacaa9246031fc4a021f5a')">نسخ البصمة</button></div>
+        <div class="fl-desc">بصمات SHA-256 لملفات الحزمة الأساسية للتحقق من السلامة</div>
+        <div class="fl-meta">0.3 KB • SHA-256: b6798b47e9…1f7c51 <button class="fl-copy" onclick="cp(this,'b6798b47e94c7800e93039ee73db3e5550ec7634c17e4ffb22e9219e601f7c51')">نسخ البصمة</button></div>
       </div>
       <a class="fl-btn alt" href="SHA256SUMS.txt" download>⬇ تحميل</a>
     </div>
@@ -216,8 +215,8 @@
       <div class="fl-ico">🔄</div>
       <div class="fl-info">
         <div class="fl-name">update.json</div>
-        <div class="fl-desc">نموذج فحص التحديثات داخل التطبيق (versionCode 23)</div>
-        <div class="fl-meta">1.0 KB • SHA-256: 65a2cad44e…34efa5 <button class="fl-copy" onclick="cp(this,'65a2cad44e51286c1a252eb7cd48dec02e7fe31e3d91ccef6b698f76df34efa5')">نسخ البصمة</button></div>
+        <div class="fl-desc">نموذج فحص التحديثات داخل التطبيق (versionCode 25)</div>
+        <div class="fl-meta">0.7 KB • SHA-256: 9a46442555…26f4fe <button class="fl-copy" onclick="cp(this,'9a46442555ad8ee7bff73eb0d7c95270a115ef0180b079efc30b0abf2826f4fe')">نسخ البصمة</button></div>
       </div>
       <a class="fl-btn alt" href="update.json" download>⬇ تحميل</a>
     </div>
@@ -225,8 +224,8 @@
       <div class="fl-ico">🛠</div>
       <div class="fl-info">
         <div class="fl-name">build-release.sh</div>
-        <div class="fl-desc">سكربت البناء والتوقيع الآلي (VER=2.0.0 / CODE=23)</div>
-        <div class="fl-meta">3.3 KB • SHA-256: 358554819a…360996 <button class="fl-copy" onclick="cp(this,'358554819a4d9943e8a328364ec7582e635bc2bb7e42f63fb17c9c7396360996')">نسخ البصمة</button></div>
+        <div class="fl-desc">سكربت البناء والتوقيع الآلي (VER=2.2.0 / CODE=25)</div>
+        <div class="fl-meta">3.5 KB • SHA-256: 68064c6950…39d59c <button class="fl-copy" onclick="cp(this,'68064c6950a3102b3cbc124b15c00ce46b09967e7e52dee8bc0baa6bf539d59c')">نسخ البصمة</button></div>
       </div>
       <a class="fl-btn alt" href="build-release.sh" download>⬇ تحميل</a>
     </div>
@@ -235,7 +234,7 @@
       <div class="fl-info">
         <div class="fl-name">verify-release.sh</div>
         <div class="fl-desc">سكربت الفحص المستمر لسلامة الإصدار</div>
-        <div class="fl-meta">5.0 KB • SHA-256: 5e9af50c6a…db2f4a <button class="fl-copy" onclick="cp(this,'5e9af50c6a0d3d004f44a62deea24e3abdb6e7537588164c74a4a398cbdb2f4a')">نسخ البصمة</button></div>
+        <div class="fl-meta">5.0 KB • SHA-256: 22c02c86f3…953ae0 <button class="fl-copy" onclick="cp(this,'22c02c86f3a2d90ad4d514c9066cca665a20d1c00a01b9c2762019641f953ae0')">نسخ البصمة</button></div>
       </div>
       <a class="fl-btn alt" href="verify-release.sh" download>⬇ تحميل</a>
     </div>
@@ -243,7 +242,7 @@
       <div class="fl-ico">🕰</div>
       <div class="fl-info">
         <div class="fl-name">Masrofi-v1.7.0.apk</div>
-        <div class="fl-desc">إصدار قديم مرجعي بتوقيع قديم — لا يرقّى مباشرة إلى v2.0.0</div>
+        <div class="fl-desc">إصدار قديم مرجعي بتوقيع قديم — لا يرقّى مباشرة إلى v2.2.0</div>
         <div class="fl-meta">340.4 KB • SHA-256: db0cc2ef6c…e0795e <button class="fl-copy" onclick="cp(this,'db0cc2ef6c02a0040e06ccbb5a235be2fd10dad755736ca0ed84eddb10e0795e')">نسخ البصمة</button></div>
       </div>
       <a class="fl-btn alt" href="Masrofi-v1.7.0.apk" download>⬇ تحميل</a>
@@ -263,7 +262,7 @@
 
   <footer>
     <p>تطوير <b>مــروان السيــدي | Marwan Alsidi</b> • دولــة لــيـبـيـا 🇱🇾 • Alsidi Group</p>
-    <p>مصروفي v2.0.0 (versionCode 23) — صفحة مكتفية ذاتياً تعمل دون إنترنت</p>
+    <p>مصروفي v2.2.0 (versionCode 25) — صفحة مكتفية ذاتياً تعمل دون إنترنت</p>
   </footer>
 </div>
 <div class="copied" id="copied">✔ تم النسخ</div>

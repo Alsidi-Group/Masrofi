@@ -9,8 +9,8 @@ set -u
 PKG="${1:-.}"
 cd "$PKG" 2>/dev/null || { echo "✗ المجلد غير موجود: $PKG"; exit 1; }
 
-VER="2.0.0"
-CODE="23"
+VER="2.2.0"
+CODE="25"
 APK="Masrofi-v${VER}.apk"
 DEC="Masrofi-apktool-decoded.zip"
 SDK="${ANDROID_BUILD_TOOLS:-}"   # يمكن تمرير مسار build-tools هنا
@@ -54,8 +54,8 @@ if [ -n "${APKSIGNER:-}" ] && [ -x "${APKSIGNER:-}" ]; then
   if "$APKSIGNER" verify "$APK" >/dev/null 2>&1; then
     ok "التوقيع سليم apksigner verify"
     CERT="$("$APKSIGNER" verify --print-certs "$APK" 2>/dev/null | rg -o 'SHA-256 digest: [0-9a-f]+' | head -1 | cut -d' ' -f3)"
-    [ "$CERT" = "abcc93eb60ec8042822eb4b162dbf3f20a11293644bd1d9f0731dd9a76becb97" ] \
-      && ok "شهادة مصروفي المعروفة (abcc93eb…)" || bad "الشهادة غير المتوقعة: ${CERT:-؟}"
+    [ "$CERT" = "de0058a896a49b7d4c81d4981e6bc5aeafb9d55045921315fe195651725a152c" ] \
+      && ok "شهادة مصروفي المعروفة (de0058a8…)" || bad "الشهادة غير المتوقعة: ${CERT:-؟}"
   else
     bad "فشل apksigner verify — APK غير موقّع أو تالف"
   fi
